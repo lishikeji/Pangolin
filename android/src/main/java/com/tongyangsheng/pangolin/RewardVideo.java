@@ -118,6 +118,17 @@ public class RewardVideo extends FlutterActivity {
                 mttRewardVideoAd = null;
             }
 
+            @Override
+            public void onRewardVideoCached(TTRewardVideoAd ttRewardVideoAd) {
+                if (debug)
+                {
+                    Log.e(TAG, "onRewardVideoCached");
+                    TToast.show(context, "rewardVideoAd video cached");
+                }
+                mttRewardVideoAd.showRewardVideoAd(activity, TTAdConstant.RitScenes.CUSTOMIZE_SCENES, "scenes_test");
+                mttRewardVideoAd = null;
+            }
+
             //视频广告的素材加载完毕，比如视频url等，在此回调后，可以播放在线视频，网络不好可能出现加载缓冲，影响体验。
             @Override
             public void onRewardVideoAdLoad(TTRewardVideoAd ad) {
